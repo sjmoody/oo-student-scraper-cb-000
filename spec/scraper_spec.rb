@@ -1,5 +1,5 @@
 require "spec_helper"
-
+require 'pry'
 describe "Scraper" do
 
   let!(:student_index_array) {[{:name=>"Joe Burgess", :location=>"New York, NY", :profile_url=>"students/joe-burgess.html"},
@@ -43,6 +43,8 @@ describe "Scraper" do
     it "can handle profile pages without all of the social links" do
       profile_url = "./fixtures/student-site/students/david-kim.html"
       scraped_student = Scraper.scrape_profile_page(profile_url)
+      #Error: not sure why these don't match.  check in bindin
+      #binding.pry
       expect(scraped_student).to be_a(Hash)
       expect(scraped_student).to match(student_david_hash)
     end
